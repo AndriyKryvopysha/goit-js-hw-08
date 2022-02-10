@@ -10,9 +10,9 @@ const refs = {
 };
 const formData = {};
 
-populateTextarea();
+populateTextArea();
 
-refs.form.addEventListener('input', throttle(onTextareaInput, 500));
+refs.form.addEventListener('input', throttle(onTextAreaInput, 500));
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
@@ -22,13 +22,13 @@ refs.form.addEventListener('submit', e => {
     console.log(objData);    
 });
 
-function onTextareaInput(e) {
+function onTextAreaInput(e) {
   formData[e.target.name] = e.target.value;
   const stringifiedData = JSON.stringify(formData);
   localStorage.setItem(STORAGE_KEY, stringifiedData);
 }
 
-function populateTextarea() {
+function populateTextArea() {
   const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
   if (savedMessage === null) {
