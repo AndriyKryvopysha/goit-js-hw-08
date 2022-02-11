@@ -14,6 +14,7 @@ populateTextArea();
 
 refs.form.addEventListener('input', throttle(onTextAreaInput, 500));
 
+
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
   e.currentTarget.reset();
@@ -23,9 +24,12 @@ refs.form.addEventListener('submit', e => {
 });
 
 function onTextAreaInput(e) {
+  formData.message = refs.input.value;
+  formData.email = refs.input.value;
   formData[e.target.name] = e.target.value;
   const stringifiedData = JSON.stringify(formData);
   localStorage.setItem(STORAGE_KEY, stringifiedData);
+
 }
 
 function populateTextArea() {
@@ -35,6 +39,6 @@ function populateTextArea() {
     // console.log(savedMessage);
     return;
   }
-  refs.textarea.value = savedMessage['message'] || '';
   refs.input.value = savedMessage['email'] || '';
+  refs.textarea.value = savedMessage['message'] || '';
 }
