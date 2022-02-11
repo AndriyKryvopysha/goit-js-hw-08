@@ -24,7 +24,7 @@ refs.form.addEventListener('submit', e => {
 });
 
 function onTextAreaInput(e) {
-  formData.message = refs.input.value;
+  formData.message = refs.textarea.value;
   formData.email = refs.input.value;
   formData[e.target.name] = e.target.value;
   const stringifiedData = JSON.stringify(formData);
